@@ -11,7 +11,14 @@ describe('Tests for Package Coyno Mockup Data', function() {
         describe('Basic tests', function() {
             describe('Initializing the db', function() {
                 it('should initialize the DB', function (done) {
-                    testDataManager.initDB(done);
+                    testDataManager.initDB(function(err) {
+                        if (err) return done(err);
+                        mongo.db.listCollections({name: "bitcoinwallets"}).toArray(function(err, items) {
+                            if(err) return done(err);
+                            items.length.should.be.above(0);
+                            done();
+                        });
+                    });
                 })
             });
             describe('Closing the db', function() {
