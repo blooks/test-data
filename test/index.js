@@ -44,6 +44,27 @@ describe('Tests for Package Coyno Mockup Data', function() {
                     testDataManager.emptyDB('wallets', done);
                 });
             });
+        });
+
+
+        describe('Exchange mocking', function() {
+            before(function(done) {
+                testDataManager.initDB(done);
+            });
+            after(function(done) {
+                testDataManager.closeDB(done);
+            });
+            describe('Adding wallets', function() {
+                it('should add a wallet', function(done) {
+                    testDataManager.fillDB('exchanges', done);
+                });
+            });
+            describe('Deleting wallets', function() {
+                it('should delete all wallets', function(done) {
+                    testDataManager.emptyDB('exchanges', done);
+                });
+            });
         })
     })
 });
+
