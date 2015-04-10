@@ -27,6 +27,8 @@
   "homepage": "https://www.coyno.com",
   "dependencies": {
     "async": "^0.9.0",
-    "coyno-mongo": "^0.1.4"
+    "coyno-mongo": "^0.1.4",
+    "coyno-wallets": "0.0.35",
+    "debug": "^2.1.3"
   }
 }
