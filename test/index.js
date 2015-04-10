@@ -40,7 +40,7 @@ describe('Tests for Package Coyno Mockup Data', function() {
                     });
             });
             describe('Deleting wallets', function() {
-                it('should add a wallet', function(done) {
+                it('should delete all wallets', function(done) {
                     testDataManager.emptyDB('wallets', done);
                 });
             });
