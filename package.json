@@ -1,6 +1,6 @@
 {
   "name": "coyno-mockup-data",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A library to generate mockup and test data for Coyno.",
   "main": "index.js",
   "repository": {
