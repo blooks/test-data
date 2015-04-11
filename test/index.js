@@ -54,15 +54,22 @@ describe('Tests for Package Coyno Mockup Data', function() {
             after(function(done) {
                 testDataManager.closeDB(done);
             });
-            describe('Adding wallets', function() {
+            describe('Adding all exchanges', function() {
                 it('should add a wallet', function(done) {
                     testDataManager.fillDB('exchanges', done);
                 });
             });
-            describe('Deleting wallets', function() {
+            describe('Deleting all exchanges', function() {
                 it('should delete all wallets', function(done) {
                     testDataManager.emptyDB('exchanges', done);
                 });
+            });
+            describe('Getting coinbase', function() {
+               it('should get coinbase exchange', function(done) {
+                    var coinbase = testDataManager.getExchange('coinbase');
+                   coinbase.exchange.should.be.equal('coinbase');
+                   done();
+                   });
             });
         })
     })
