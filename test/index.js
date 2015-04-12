@@ -1,3 +1,4 @@
+require('./config');
 
 var TestDataManager = require('../index').Manager;
 
