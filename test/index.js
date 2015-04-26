@@ -1,9 +1,7 @@
-require('./config');
-
 var TestDataManager = require('../index').Manager;
 
 var mongo = require('coyno-mongo');
-var should = require('should');
+require('should');
 var debug = require('debug')('coyno:mock-data-tests');
 var testDataManager = new TestDataManager();
 
@@ -35,19 +33,36 @@ describe('Tests for Package Coyno Mockup Data', function() {
             after(function(done) {
                 testDataManager.closeDB(done);
             });
-            describe('Adding wallets', function() {
-                it('should add a wallet', function(done) {
-                       testDataManager.fillDB('wallets', done);
+            describe('Wallets', function() {
+                before(function(done) {
+                    testDataManager.fillDB(['wallets'], done);
+                });
+                after(function (done) {
+                    testDataManager.emptyDB(['wallets'], done);
+                });
+                describe('Check wallet', function() {
+                    it('should find the right wallet', function(done){
+                        done();
                     });
+                });
             });
-            describe('Deleting wallets', function() {
-                it('should delete all wallets', function(done) {
-                    testDataManager.emptyDB('wallets', done);
+            describe('Transfers', function() {
+                before(function (done) {
+                    testDataManager.fillDB(['transfers'], done);
+                });
+                after(function (done) {
+                    testDataManager.emptyDB(['transfers'], done);
+                });
+                describe('Check transfers', function() {
+                    it('should find correct transfers', function(done){
+                        mongo.db.collection('transfers').find().toArray(function(err, result) {
+                            result.length.should.be.above(30);
+                            done();
+                        })
+                    });
                 });
             });
         });
-
-
         describe('Exchange mocking', function() {
             before(function(done) {
                 testDataManager.initDB(done);
@@ -57,21 +72,23 @@ describe('Tests for Package Coyno Mockup Data', function() {
             });
             describe('Adding all exchanges', function() {
                 it('should add a wallet', function(done) {
-                    testDataManager.fillDB('exchanges', done);
+                    testDataManager.fillDB(['exchanges'], done);
                 });
             });
             describe('Deleting all exchanges', function() {
                 it('should delete all wallets', function(done) {
-                    testDataManager.emptyDB('exchanges', done);
+                    testDataManager.emptyDB(['exchanges'], done);
                 });
             });
-            describe('Getting coinbase', function() {
-               it('should get coinbase exchange', function(done) {
-                    var coinbase = testDataManager.getExchange('coinbase');
-                   coinbase.exchange.should.be.equal('coinbase');
-                   done();
-                   });
-            });
+            if (process.env.COINBASE_ACCESS_TOKEN) {
+                describe('Getting coinbase', function () {
+                    it('should get coinbase exchange', function (done) {
+                        var coinbase = testDataManager.getExchange('coinbase');
+                        coinbase.exchange.should.be.equal('coinbase');
+                        done();
+                    });
+                });
+            }
         })
     })
 });

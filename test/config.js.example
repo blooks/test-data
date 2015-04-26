@@ -1,2 +1,0 @@
-process.env.COINBASE_ACCESS_TOKEN = "73f2ee7cb45f2c7d09ef309ef5e224a275f7d2ab0eb97a729c80b4ee070d3b12";
-process.env.MONGO_URL="mongodb://localhost:27017/coynotest";
