@@ -1,6 +1,6 @@
 {
   "name": "coyno-mockup-data",
-  "version": "0.0.8",
+  "version": "0.0.11",
   "description": "A library to generate mockup and test data for Coyno.",
   "main": "index.js",
   "repository": {
@@ -27,7 +27,7 @@
   "homepage": "https://www.coyno.com",
   "dependencies": {
     "async": "^0.9.0",
-    "coyno-mongo": "0.0.x",
+    "coyno-mongo": "0.1.x",
     "coyno-wallets": "0.1.x",
     "debug": "^2.1.3"
   },
