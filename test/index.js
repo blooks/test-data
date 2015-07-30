@@ -1,16 +1,26 @@
-var TestDataManager = require('../index').Manager;
+var log = require('coyno-log').child({component: 'Coyno Test Data Manager Tests'});
 
-var mongo = require('coyno-mongo');
+var TestDataManager = require('../index').Manager;
+var randomstring = require('randomstring');
+var mongoUrl = 'mongodb://localhost/coyno-mockup-data-tests' +  randomstring.generate(7);
+
+var CoynoMongo = require('coyno-mongo');
+var mongo = new CoynoMongo(mongoUrl);
 require('should');
-var debug = require('debug')('coyno:mock-data-tests');
-var testDataManager = new TestDataManager();
+var testDataManager = new TestDataManager(mongoUrl);
 
 describe('Tests for Package Coyno Mockup Data', function() {
+    before(function(done) {
+        mongo.start(done);
+    });
+    after(function(done) {
+        mongo.stop(done);
+    });
     describe('Unit tests', function () {
         describe('Basic tests', function() {
             describe('Initializing the db', function() {
                 it('should initialize the DB', function (done) {
-                    testDataManager.initDB(function(err) {
+                    testDataManager.start(function(err) {
                         if (err) return done(err);
                         mongo.db.listCollections({name: "bitcoinwallets"}).toArray(function(err, items) {
                             if(err) return done(err);
@@ -22,16 +32,16 @@ describe('Tests for Package Coyno Mockup Data', function() {
             });
             describe('Closing the db', function() {
                 it('should close the DB', function (done) {
-                    testDataManager.closeDB(done);
+                    testDataManager.stop(done);
                 })
             });
         });
         describe('Filling the DB with data and deleting it again', function() {
             before(function(done) {
-                testDataManager.initDB(done);
+                testDataManager.start(done);
             });
             after(function(done) {
-                testDataManager.closeDB(done);
+                testDataManager.stop(done);
             });
             describe('Wallets', function() {
                 before(function(done) {
@@ -65,10 +75,10 @@ describe('Tests for Package Coyno Mockup Data', function() {
         });
         describe('Exchange mocking', function() {
             before(function(done) {
-                testDataManager.initDB(done);
+                testDataManager.start(done);
             });
             after(function(done) {
-                testDataManager.closeDB(done);
+                testDataManager.stop(done);
             });
             describe('Adding all exchanges', function() {
                 it('should add a wallet', function(done) {

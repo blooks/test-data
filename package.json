@@ -1,6 +1,6 @@
 {
-  "name": "coyno-mockup-data",
-  "version": "0.0.11",
+  "name": "coyno-test-data",
+  "version": "0.0.1",
   "description": "A library to generate mockup and test data for Coyno.",
   "main": "index.js",
   "repository": {
@@ -16,7 +16,7 @@
   ],
   "scripts": {
     "lint": "gulp lint",
-    "test": "gulp test",
+    "test": "mocha test",
     "coverage": "gulp coverage",
     "build": "gulp"
   },
@@ -27,8 +27,8 @@
   "homepage": "https://www.coyno.com",
   "dependencies": {
     "async": "^0.9.0",
-    "coyno-log": "0.0.15",
-    "coyno-mongo": "0.1.x",
+    "coyno-log": "^0.0.15",
+    "coyno-mongo": ">=0.2.0 <0.3",
     "debug": "^2.1.3"
   },
   "devDependencies": {
@@ -45,6 +45,7 @@
     "mocha": "^2.1.0",
     "more-fs": "^0.5.0",
     "q": "^1.2.0",
+    "randomstring": "^1.0.7",
     "should": "^5.2.0",
     "through2": "^0.6.3"
   }
