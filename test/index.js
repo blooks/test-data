@@ -1,4 +1,4 @@
-var log = require('@blooks/log').child({component: 'Coyno Test Data Manager Tests'})
+var log = require('@blooks/log').child({ component: 'Coyno Test Data Manager Tests' })
 
 var TestDataManager = require('../index').Manager
 var randomstring = require('randomstring')
@@ -22,11 +22,11 @@ describe('Tests for Package Coyno Mockup Data', function () {
         it('should initialize the DB', function (done) {
           testDataManager.start(function (err) {
             if (err) {
-                return done(err)
+              return done(err)
             }
-            mongo.db.listCollections({name: 'bitcoinwallets'}).toArray(function (err, items) {
+            mongo.db.listCollections({ name: 'bitcoinwallets' }).toArray(function (err, items) {
               if (err) {
-                  return done(err)
+                return done(err)
               }
               items.length.should.be.above(0)
               done()
@@ -49,10 +49,10 @@ describe('Tests for Package Coyno Mockup Data', function () {
       })
       describe('Wallets', function () {
         before(function (done) {
-          testDataManager.fillDB(['wallets'], done)
+          testDataManager.fillDB([ 'wallets' ], done)
         })
         after(function (done) {
-          testDataManager.emptyDB(['wallets'], done)
+          testDataManager.emptyDB([ 'wallets' ], done)
         })
         describe('Check wallet', function () {
           it('should find the right wallet', function (done) {
@@ -62,10 +62,10 @@ describe('Tests for Package Coyno Mockup Data', function () {
       })
       describe('Transfers', function () {
         before(function (done) {
-          testDataManager.fillDB(['transfers'], done)
+          testDataManager.fillDB([ 'transfers' ], done)
         })
         after(function (done) {
-          testDataManager.emptyDB(['transfers'], done)
+          testDataManager.emptyDB([ 'transfers' ], done)
         })
         describe('Check transfers', function () {
           it('should find correct transfers', function (done) {
@@ -86,12 +86,12 @@ describe('Tests for Package Coyno Mockup Data', function () {
       })
       describe('Adding all exchanges', function () {
         it('should add a wallet', function (done) {
-          testDataManager.fillDB(['exchanges'], done)
+          testDataManager.fillDB([ 'exchanges' ], done)
         })
       })
       describe('Deleting all exchanges', function () {
         it('should delete all wallets', function (done) {
-          testDataManager.emptyDB(['exchanges'], done)
+          testDataManager.emptyDB([ 'exchanges' ], done)
         })
       })
       if (process.env.COINBASE_ACCESS_TOKEN) {
