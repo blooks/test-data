@@ -20,33 +20,35 @@
     "coverage": "gulp coverage",
     "build": "gulp"
   },
-  "license": "All rights reserved",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/coyno/coyno-mockup-data/issues"
   },
   "homepage": "https://www.coyno.com",
   "dependencies": {
-    "async": "^0.9.0",
-    "coyno-log": "^0.0.15",
-    "coyno-mongo": ">=0.2.0 <0.3",
-    "debug": "^2.1.3"
+    "@blooks/log": "^0.2.4",
+    "@blooks/mongo": "^0.2.2",
+    "async": "^2.0.1",
+    "debug": "^2.2.0",
+    "lodash": "^4.15.0"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "gulp": "^3.8.10",
-    "gulp-jshint": "^1.9.0",
-    "gulp-mocha": "^2.0.0",
-    "gulp-shell": "^0.2.11",
-    "gulp-util": "^3.0.2",
-    "istanbul": "^0.3.5",
-    "jsdoc": "^3.3.0-alpha13",
-    "jsdoc-to-markdown": "^0.5.9",
-    "lodash": "^3.6.0",
-    "mocha": "^2.1.0",
-    "more-fs": "^0.5.0",
-    "q": "^1.2.0",
-    "randomstring": "^1.0.7",
-    "should": "^5.2.0",
-    "through2": "^0.6.3"
+    "mocha": "^3.0.2",
+    "randomstring": "^1.1.5",
+    "should": "^11.1.0",
+    "standard": "^7.1.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "mocha": true,
+      "node": true
+    },
+    "extends": "standard"
+  },
+  "standard": {
+    "env": [
+      "node",
+      "mocha"
+    ]
   }
 }
