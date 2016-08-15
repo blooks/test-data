@@ -1,9 +1,6 @@
 machine:
   node:
     version: 6
-  version: trusty-645-0f3f4aa
-  services:
-    - mongo
 
 deployment:
   versionbuild:
