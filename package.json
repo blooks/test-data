@@ -1,17 +1,17 @@
 {
-  "name": "coyno-test-data",
+  "name": "@blooks/test-data",
   "version": "0.0.2",
   "description": "A library to generate mockup and test data for Coyno.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/coyno/coyno-mockup-data.git"
+    "url": "https://github.com/blooks/test-data.git"
   },
   "author": "Coyno <coyno@coyno.com>",
   "contributors": [
     {
       "name": "Levin Keller",
-      "email": "levin@coyno.com"
+      "email": "post@levinkeller.de"
     }
   ],
   "scripts": {
@@ -22,9 +22,8 @@
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/coyno/coyno-mockup-data/issues"
+    "url": "https://github.com/blooks/test-data/issues"
   },
-  "homepage": "https://www.coyno.com",
   "dependencies": {
     "@blooks/log": "^0.2.4",
     "@blooks/mongo": "^0.2.2",
