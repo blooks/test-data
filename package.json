@@ -1,6 +1,6 @@
 {
   "name": "@blooks/test-data",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A library to generate mockup and test data for Coyno.",
   "main": "index.js",
   "repository": {
